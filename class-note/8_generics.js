@@ -1,12 +1,10 @@
 // 호출하는 시점에 parameter의 type을 정하는 것이 generics
-function logText<T>(text: T):T {
+function logText(text) {
     console.log(text);
     return text;
 }
-
-logText<string>('하이');
-logText<number>(10);
-
+logText('하이');
+logText(10);
 // 그동안 해왔던 방법 대비 generic의 장점은?
 // 기존 방법: 단순히 type을 다르게 받기 위해서 중복되는 코드를 계속 생산해야했다.
 // 이를 해결하기 위해 union type을 썼지.
@@ -15,23 +13,19 @@ logText<number>(10);
 //    parameter는 그 타입들의 공통속성만 사용할 수 있기에..
 // 2) 심지어 그것을 return한 값의 type이 여전히 2개 이상이기에
 //    string을 입력 후 받은 return값에서 .split을 사용하지 못하는 상황 발생.
-function logUnion(text: string | number) {
+function logUnion(text) {
     return text;
     // text.split() // error
 }
-const a = logUnion('a');
+var a = logUnion('a');
 // a.split() // error
-
 // 이 때, generic을 사용하면 위의 문제점을 해결할 수 있다.
-// 함수 정의 시엔 <T>로 비워두고, 함수 호출 시에 들어갈 type을 정의해버리는거지
-function genericTest<T>(text: T): T {
+function genericTest(text) {
     console.log(text);
     return text;
 }
-
-const stringTest = genericTest<string>('hi');
+var stringTest = genericTest('hi');
 stringTest.split('');
-
-const numberTest = genericTest<number>(10);
+var numberTest = genericTest(10);
 numberTest.toString();
 console.log(typeof numberTest);
