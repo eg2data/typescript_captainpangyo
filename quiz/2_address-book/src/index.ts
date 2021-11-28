@@ -1,6 +1,6 @@
 interface PhoneNumberDictionary {
-  [phone: string]: {
-    num: number;
+  [phone: string]: { // ?????? 음..? 이걸 어찌 해석하지? string type의 phone 변수가 들어간 배열. 근데 num은 뭐지
+      num: number;   // 이게 뭐지???? 음...
   };
 }
 
@@ -12,7 +12,7 @@ interface Contact {
 
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
-function fetchContacts() {
+function fetchContacts()  { // 음.. return이 Promise의 instance.. type은..?
   // TODO: 아래 변수의 타입을 지정해보세요.
   const contacts = [
     {
@@ -98,4 +98,4 @@ class AddressBook {
   /* ------------------------------------------------ */
 }
 
-new AddressBook();
+new AddressBook(); // ???? 이게 이 밑에 있는 것도 굉장히 생소해. 이게 대체 뭔지
